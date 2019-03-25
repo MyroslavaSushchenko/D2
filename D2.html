@@ -1,0 +1,63 @@
+  <script>
+
+   var usercard = prompt("Enter your card");
+   usercard = usercard.replace(/\s+/g,'');
+    
+	var sum = 0;
+	for(var i = usercard.length - 1; i >= 0; i--){
+	   var digit = +usercard[i]; 
+	   
+	   if(i % 2 ==0){
+	     digit *= 2;
+		 digit = digit > 9 ? digit - 9 : digit;
+	   }
+	   sum += digit;
+	}
+    if(sum % 10 == 0){
+	   correct = true;
+    }else{
+	  correct = false;
+      accepted = false;
+      paymentSystem = "not correct";
+    };
+	
+    
+    var card = usercard.slice(0,2);
+	var cardformaster = usercard.slice(0,4);
+     
+    
+    if(card >=51 && card <= 55 || cardformaster >= 2221 && cardformaster <= 2720){
+        var paymentSystem = "MasterCard";
+        accepted = true;
+		console.log(`card: "${usercard}",
+	            correct: ${correct},
+				paymentSystem: "${paymentSystem}",
+				accepted: ${accepted}`);
+        
+    }else if(card == 50 || card >=56 && card <= 58 || card == 63 || card == 67){
+        var paymentSystem = "Maestro";
+        accepted = true;
+		console.log(`card: "${usercard}",
+	            correct: ${correct},
+				paymentSystem: "${paymentSystem}",
+				accepted: ${accepted}`);
+        
+    }else if(card[0] == 4){
+       var paymentSystem = "Visa";
+        accepted = true;
+		console.log(`card: "${usercard}",
+	            correct: ${correct},
+				paymentSystem: "${paymentSystem}",
+				accepted: ${accepted}`);
+        
+    }else{
+        accepted = false;
+		console.log(`card: "${usercard}",
+	            correct: ${correct}
+				`);
+				
+    };
+   
+</script>	
+	
+  
